@@ -33,25 +33,23 @@
         }
         .header-user:hover { background: #eeece6; }
         .user-icon { width: 22px; height: 22px; }
-        .page-content { padding: 80px 24px 40px; max-width: 960px; margin: 0 auto; box-sizing: border-box; }
+        .page-content { padding: 80px 24px 40px; max-width: 1200px; margin: 0 auto; box-sizing: border-box; }
+        /* Общий контейнер страниц (special, news, contacts и т.д.): отступы и ширина */
+        .site-center { max-width: 1200px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
         .page-content h1 { font-size: 1.5rem; color: #1a1a1a; margin: 0 0 1rem; }
         .page-content p { margin: 0 0 0.5rem; color: #444; line-height: 1.5; }
+        /* Отступы между карточками на странице «Спец техника» и др. — можно менять mb-4 в шаблоне или здесь */
+        .page-content .card.mb-4 { margin-bottom: 1.5rem !important; }
+        /* Контейнер для Scrollspy: при скролле внутри него подсвечивается пункт в list-group */
+        .scrollspy-example { max-height: 360px; overflow-y: auto; position: relative; }
+        /* .promotion__sybtitle{ font-weight: 600; font-size: 25px; color: #303030; margin-top: 25px; margin-bottom: 20px; line-height: 40px;} */
     </style>
 </head>
 <body>
 <header class="site-header">
     <div class="header-capsule">
         <a href="{{ url('/') }}" class="header-logo">
-            <svg class="logo-icon" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 20h6l2-6h12l2 6h6v-4l-4-8H8L4 16v4z" fill="#e85d04"/>
-                <path d="M8 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM36 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="#1a1a1a"/>
-                <path d="M14 16h20v2H14z" fill="#e85d04" opacity="0.8"/>
-                <path d="M2 18h4v2H2zM42 18h4v2h-4z" stroke="#e85d04" stroke-width="1.5" fill="none"/>
-            </svg>
-            <div class="logo-text">
-                <span class="logo-title">ЯСТРЕБ</span>
-                <span class="logo-subtitle">ГРУЗОПЕРЕВОЗКИ</span>
-            </div>
+            <img src="./image/qwerqwer.png" alt="">
         </a>
         <nav class="header-nav">
             <a href="{{ route('special') }}" class="header-link">Спец техника</a>

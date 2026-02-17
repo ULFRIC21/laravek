@@ -10,7 +10,7 @@
             <li class="breadcrumb-item">
                 <a href="{{ url('/') }}">Главная</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Проекты</li>
+            <li class="breadcrumb-item active" aria-current="page">Спец техника</li>
         </ol>
     </div>
 </nav>
@@ -21,7 +21,7 @@
       <div class="card mb-4">
       <div class="row g-0 align-items-center">
           <div class="col-md-4">
-              <img src="/images/gazel-3m.jpg" class="img-fluid" alt="Газель фургон 3 метра">
+              <img src="/image/Gazel.jpg" class="img-fluid" alt="Газель фургон 3 метра">
           </div>
           <div class="col-md-8">
               <div class="card-body">
@@ -40,17 +40,17 @@
     <div class="card mb-4">
       <div class="row g-0 align-items-center">
           <div class="col-md-4">
-              <img src="/images/gazel-3m.jpg" class="img-fluid" alt="Газель фургон 3 метра">
+              <img src="/image/img-2-1.jpg" class="img-fluid" alt="до 20 тон">
           </div>
           <div class="col-md-8">
               <div class="card-body">
-                  <h5 class="card-title">Газель фургон 3 метра</h5>
+                  <h5 class="card-title">До 20 тонн</h5>
                   <div class="row small mb-2">
-                      <div class="col-4">Длина<br><strong>3 метра</strong></div>
-                      <div class="col-4">Ширина<br><strong>2 метра</strong></div>
-                      <div class="col-4">Высота<br><strong>1,8 метра</strong></div>
+                      <div class="col-4">Длина<br><strong>13.6 метра</strong></div>
+                      <div class="col-4">Ширина<br><strong>2.45 метра</strong></div>
+                      <div class="col-4">Высота<br><strong>2.6 метра</strong></div>
                   </div>
-                  <p class="small mb-2">Количество паллет: <strong>4</strong></p>
+                  <p class="small mb-2">Количество паллет: <strong>до32</strong></p>
                   <a href="{{ route('calc') }}" class="btn btn-warning fw-semibold">Рассчитать</a>
               </div>
           </div>
@@ -59,64 +59,7 @@
     <div class="card mb-4">
       <div class="row g-0 align-items-center">
           <div class="col-md-4">
-              <img src="/images/gazel-3m.jpg" class="img-fluid" alt="Газель фургон 3 метра">
-          </div>
-          <div class="col-md-8">
-              <div class="card-body">
-                  <h5 class="card-title">Газель фургон 3 метра</h5>
-                  <div class="row small mb-2">
-                      <div class="col-4">Длина<br><strong>3 метра</strong></div>
-                      <div class="col-4">Ширина<br><strong>2 метра</strong></div>
-                      <div class="col-4">Высота<br><strong>1,8 метра</strong></div>
-                  </div>
-                  <p class="small mb-2">Количество паллет: <strong>4</strong></p>
-                  <a href="{{ route('calc') }}" class="btn btn-warning fw-semibold">Рассчитать</a>
-              </div>
-          </div>
-      </div>
-  </div>
-    <div class="card mb-4">
-      <div class="row g-0 align-items-center">
-          <div class="col-md-4">
-              <img src="/images/gazel-3m.jpg" class="img-fluid" alt="Газель фургон 3 метра">
-          </div>
-          <div class="col-md-8">
-              <div class="card-body">
-                  <h5 class="card-title">Газель фургон 3 метра</h5>
-                  <div class="row small mb-2">
-                      <div class="col-4">Длина<br><strong>3 метра</strong></div>
-                      <div class="col-4">Ширина<br><strong>2 метра</strong></div>
-                      <div class="col-4">Высота<br><strong>1,8 метра</strong></div>
-                  </div>
-                  <p class="small mb-2">Количество паллет: <strong>4</strong></p>
-                  <a href="{{ route('calc') }}" class="btn btn-warning fw-semibold">Рассчитать</a>
-              </div>
-          </div>
-      </div>
-  </div>
-    <div class="card mb-4">
-      <div class="row g-0 align-items-center">
-          <div class="col-md-4">
-              <img src="/images/gazel-3m.jpg" class="img-fluid" alt="Газель фургон 3 метра">
-          </div>
-          <div class="col-md-8">
-              <div class="card-body">
-                  <h5 class="card-title">Газель фургон 3 метра</h5>
-                  <div class="row small mb-2">
-                      <div class="col-4">Длина<br><strong>3 метра</strong></div>
-                      <div class="col-4">Ширина<br><strong>2 метра</strong></div>
-                      <div class="col-4">Высота<br><strong>1,8 метра</strong></div>
-                  </div>
-                  <p class="small mb-2">Количество паллет: <strong>4</strong></p>
-                  <a href="{{ route('calc') }}" class="btn btn-warning fw-semibold">Рассчитать</a>
-              </div>
-          </div>
-      </div>
-  </div>
-    <div class="card mb-4">
-      <div class="row g-0 align-items-center">
-          <div class="col-md-4">
-              <img src="/images/gazel-3m.jpg" class="img-fluid" alt="Газель фургон 3 метра">
+              <img src="/image/5-tonnik.jpg" class="img-fluid" alt="До 5 тон">
           </div>
           <div class="col-md-8">
               <div class="card-body">

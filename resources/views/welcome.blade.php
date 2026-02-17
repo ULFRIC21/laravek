@@ -13,6 +13,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
         <style>
+            .promotion__sybtitle{ font-weight: 600; font-size: 25px; color: #303030; margin-top: 25px; margin-bottom: 20px; line-height: 40px;}
+            .promotion__citation{ position: relative; padding-left: 69px; font-weight: 600; font-size: 18px; line-height: 24px; letter-spacing: 0.025em; color: #3D61A2; max-width: 520px; padding-top: 16px; margin-bottom: 30px; background-image: url('/image/citation.svg');}
+            .promotion__text { padding: 20px 0px 100px 0px;}
+            
             /* ============================
                Общий фон и базовая типографика
                Применяется ко всему сайту
@@ -400,16 +404,7 @@
     <div class="header-capsule">
         <!-- Логотип: грузовик + ЯСТРЕБ / ГРУЗОПЕРЕВОЗКИ -->
         <a href="{{ url('/') }}" class="header-logo">
-            <svg class="logo-icon" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 20h6l2-6h12l2 6h6v-4l-4-8H8L4 16v4z" fill="#e85d04"/>
-                <path d="M8 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM36 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="#1a1a1a"/>
-                <path d="M14 16h20v2H14z" fill="#e85d04" opacity="0.8"/>
-                <path d="M2 18h4v2H2zM42 18h4v2h-4z" stroke="#e85d04" stroke-width="1.5" fill="none"/>
-            </svg>
-            <div class="logo-text">
-                <span class="logo-title">ЯСТРЕБ</span>
-                <span class="logo-subtitle">ГРУЗОПЕРЕВОЗКИ</span>
-            </div>
+            <img src="./image/qwerqwer.png" alt="">
         </a>
 
         <!-- Меню -->
@@ -535,6 +530,16 @@
         </div>
     </div>
 </section>
+<section class="promotion">
+    <div class="site-center">
+        <div class="promotion__title"><h3> компания ТЛК «Ястреб» – уверенный игрок на рынке транспортно-логистических услуг</h3></div>
+        <div class="promotion__sybtitle">Мы осуществляем грузоперевозки по России </div>
+        <div class="promotion__citation">Наша цель — долгосрочное, взаимовыгодное сотрудничество с каждым клиентом.</div>
+        <div class="promotion__text">
+            <p>Наша компания готова организовать для Вас грузоперевозку из Москвы в Екатеринбург со значительной экономией, которая может составить до 30 % стоимости услуг. На сегодняшний момент транспортировку грузов по направлению Москва – Екатеринбург оптимально осуществлять ускоренным контейнерным поездом, который формируется только под доставку в Екатеринбург. Средний срок в пути со дня загрузки 5-7 суток. Кроме локомотива ничего не меняется на всём пути следования. Контейнеры в составе ускоренного контейнерного поезда не находятся на узловых станциях, дожидаясь распределения в поезд, а следуют в его составе из Москвы до Екатеринбурга. Поэтому скорость перевозки таким поездом, является также преимуществом.</p>
+        </div>
+    </div>    
+</section>
 
 <!-- Блок "Работаем быстро, работаем для Вас" с фоном на всю ширину -->
 <section class="steps-block">
@@ -572,40 +577,40 @@
 </section>
 
 <div class="site-center" style="padding-top: 24px; padding-bottom: 40px;">
+    Частые вопросы
     <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
+        Что представляет собой услуга ПЕРЕГОН АВТОМОБИЛЕЙ?
       </button>
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            >На сервис «Везёт Всем» часто обращаются ЗАКАЗЧИКИ по сложным маршрутам, когда пункт загрузки или выгрузки автомобиля удален от основных автомагистралей. На сервисе работают профессиональные перегонщики, которые аккуратно с соблюдением скоростного режима выполняют перегон автомобилей. Зачастую эта услуга дешевле на 15-20% от стоимости перевозки автовозом, а порой не имеет альтернативы. Сервис выступает гарантом сохранности Вашего транспортного средства, многие исполнители работают на сервисе более 10 лет.
       </div>
     </div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
+            Как подобрать АВТОВОЗ на нужные даты?
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+        По популярным маршрутам АВТОВОЗ предоставляется на любую удобную дату с «разбежкой» 1-3 дня. По другим городам возможно согласование перевозки с ожиданием свободного места в АВТОВОЗЕ до 7-10 дней. Для ускорения перевозки ЗАКАЗЧИК может договориться с ПЕРЕВОЗЧИКОМ о доставке автомобиля до крупной межрегиональной трассы или в ближайший населенный пункт.
     </div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
+        Куда необходимо предоставить автомобиль для перевозки?
       </button>
-    </h2>
+    </h2>   
     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        Автомобиль для перевозки необходимо доставить в согласованный пункт загрузки и передать на стоянку по акту приема-передачи. Забор автомобиля также производится в пункте выгрузки с согласованной стоянки.
       </div>
     </div>
   </div>

@@ -1,3 +1,11 @@
+{{--
+  Bootstrap на этой странице:
+  - .breadcrumb — цепочка навигации (Главная / Отзывы).
+  - .list-group + .list-group-item — вертикальный список; .list-group-item-action — кликабельные пункты; .active — активный пункт (подсветка).
+  - data-bs-spy="scroll" + data-bs-target="#list-example" — Scrollspy: при скролле правого блока активным становится соответствующий пункт списка. Контейнеру нужна ограниченная высота (в layout: .scrollspy-example).
+  - .row / .col-12 .col-md-4 / .col-md-8 — сетка: на мобильных колонки друг под другом, от md — 4 и 8 колонок.
+  - .text-uppercase, .text-muted, .border, .rounded, .p-3 — утилиты Bootstrap для оформления.
+--}}
 @extends('layouts.main')
 
 @section('title', 'Отзывы — ЯСТРЕБ')
@@ -10,63 +18,34 @@
             <li class="breadcrumb-item">
                 <a href="{{ url('/') }}">Главная</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Проекты</li>
+            <li class="breadcrumb-item active" aria-current="page">Отзывы</li>
         </ol>
     </div>
 </nav>
 <div class="site-center py-4">
-    <h1 class="mb-3">Отзывы клиентов</h1>
+    <h1 class="mb-2 text-uppercase">ОТЗЫВЫ КЛИЕНТОВ</h1>
     <p class="text-muted mb-4">Здесь собраны реальные отзывы компаний и частных клиентов, которые доверили нам свои грузы.</p>
 
-    <div class="row g-3 mb-4">
-        <div class="col-12 col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title mb-1">ООО «СтройИнвест»</h5>
-                    <p class="small text-muted mb-2">Москва — Санкт‑Петербург</p>
-                    <p class="card-text small">
-                        «Работаем с компанией уже больше года. Понравилась оперативность доставки и честный подход:
-                        всегда заранее предупреждают о рисках и помогают подобрать оптимальный тариф.»
-                    </p>
-                </div>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div id="list-example" class="list-group">
+                <a class="list-group-item list-group-item-action active" href="#list-item-1">Отзыв 1</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-2">Отзыв 2</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-3">Отзыв 3</a>
+                <a class="list-group-item list-group-item-action" href="#list-item-4">Отзыв 4</a>
             </div>
         </div>
-        <div class="col-12 col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title mb-1">ИП Петров А. В.</h5>
-                    <p class="small text-muted mb-2">Новосибирск — Омск</p>
-                    <p class="card-text small">
-                        «Нужно было срочно доставить оборудование. Менеджер быстро рассчитал маршрут, водитель был
-                        на погрузке вовремя, груз приехал целым. Обязательно будем обращаться ещё.»
-                    </p>
-                </div>
+        <div class="col-12 col-md-8">
+            <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example border rounded p-3" tabindex="0">
+                <h4 id="list-item-1">Отзыв 1</h4>
+                <p>ООО «СтройИнвест», Москва — Санкт‑Петербург. Работаем с компанией уже больше года. Понравилась оперативность доставки и честный подход: всегда заранее предупреждают о рисках и помогают подобрать оптимальный тариф. Рекомендуем.</p>
+                <h4 id="list-item-2">Отзыв 2</h4>
+                <p>ИП Петров А. В., Новосибирск — Омск. Нужно было срочно доставить оборудование. Менеджер быстро рассчитал маршрут, водитель был на погрузке вовремя, груз приехал целым. Обязательно будем обращаться ещё.</p>
+                <h4 id="list-item-3">Отзыв 3</h4>
+                <p>АО «Логистик», Екатеринбург — Казань. Заказывали перевозку паллет. Цена фиксированная, без доплат. Документы оформили за один день. Удобно и прозрачно.</p>
+                <h4 id="list-item-4">Отзыв 4</h4>
+                <p>Частный заказчик, Краснодар — Ростов. Переезд квартиры. Подобрали машину под габариты, грузчики помогли. Всё приехало в срок, без повреждений. Спасибо.</p>
             </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title mb-3">Оставить отзыв</h5>
-            <form>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Имя / компания</label>
-                        <input type="text" class="form-control" placeholder="Как к вам обращаться">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Контактный телефон</label>
-                        <input type="tel" class="form-control" placeholder="+7 (___) ___‑__‑__">
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">Отзыв</label>
-                        <textarea class="form-control" rows="3" placeholder="Расскажите, как прошла перевозка"></textarea>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-warning fw-semibold">Отправить отзыв</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 </div>
