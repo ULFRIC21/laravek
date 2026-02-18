@@ -17,31 +17,18 @@
             .promotion__citation{ position: relative; padding-left: 69px; font-weight: 600; font-size: 18px; line-height: 24px; letter-spacing: 0.025em; color: #3D61A2; max-width: 520px; padding-top: 16px; margin-bottom: 30px; background-image: url('/image/citation.svg');}
             .promotion__text { padding: 20px 0px 100px 0px;}
             
-            /* ============================
-               Общий фон и базовая типографика
-               Применяется ко всему сайту
-               ============================ */
+
+
             html, body {
                 width: 100%;
                 min-height: 100%;
                 margin: 0;
                 padding: 0;
                 font-family: 'Nunito', sans-serif;
-                /* Вариант 1: один цвет */
-                background-color: #f5f3ee;
-                /* Вариант 2: градиент (раскомментируй и закомментируй background-color выше) */
-                /* background: linear-gradient(180deg, #f8f6f0 0%, #e8e4dc 50%, #ddd8ce 100%); */
-                /* Вариант 3: картинка (раскомментируй и положи изображение в public/images/) */
-                /* background-image: url('/images/bg.jpg'); */
-                /* background-size: cover; */
-                /* background-attachment: fixed; */
-            }
 
-            /* ============================
-               ШАПКА САЙТА (верхнее меню)
-               .site-header — фиксированная шапка,
-               внутри неё "капсула" с логотипом и меню
-               ============================ */
+                background-color: #f5f3ee;
+
+            }
             .site-header {
                 position: fixed;
                 top: 0;
@@ -53,8 +40,6 @@
                 padding: 12px 16px;
             }
 
-            /* .header-capsule — светлая "капсула" с тенью,
-               в которой находятся логотип, пункты меню и иконка пользователя */
             .header-capsule {
                 width: 100%;
                 max-width: 1200px;
@@ -68,7 +53,6 @@
                 box-sizing: border-box;
             }
 
-            /* .header-logo — блок логотипа (иконка грузовика + текст ЯСТРЕБ) */
             .header-logo {
                 display: flex;
                 align-items: center;
@@ -77,37 +61,31 @@
                 margin-right: 24px;
             }
 
-            /* .logo-icon — SVG-иконка грузовика */
             .logo-icon {
                 width: 40px;
                 height: 28px;
                 flex-shrink: 0;
             }
 
-            /* .logo-text — обёртка для надписей "ЯСТРЕБ / ГРУЗОПЕРЕВОЗКИ" */
+
             .logo-text {
                 display: flex;
                 flex-direction: column;
                 line-height: 1.2;
             }
 
-            /* .logo-title — крупная надпись "ЯСТРЕБ" */
             .logo-title {
                 font-size: 1.1rem;
                 font-weight: 700;
                 color: #e85d04;
                 letter-spacing: 0.02em;
             }
-
-            /* .logo-subtitle — подпись "ГРУЗОПЕРЕВОЗКИ" под логотипом */
             .logo-subtitle {
                 font-size: 0.7rem;
                 font-weight: 600;
                 color: #e85d04;
                 letter-spacing: 0.04em;
             }
-
-            /* .header-nav — контейнер горизонтального меню (ссылки в шапке) */
             .header-nav {
                 flex: 1;
                 display: flex;
@@ -116,7 +94,6 @@
                 flex-wrap: wrap;
             }
 
-            /* .header-link — отдельный пункт меню */
             .header-link {
                 font-size: 0.9rem;
                 font-weight: 600;
@@ -124,19 +101,15 @@
                 text-decoration: none;
                 white-space: nowrap;
             }
-
-            /* Подсветка ссылки меню при наведении */
             .header-link:hover {
                 color: #e85d04;
             }
 
-            /* .header-link--long — пункт меню с длинным текстом (перенос по словам) */
             .header-link--long {
                 white-space: normal;
                 max-width: 160px;
             }
 
-            /* .header-user — круглая кнопка с иконкой пользователя (личный кабинет) */
             .header-user {
                 width: 40px;
                 height: 40px;
@@ -151,21 +124,15 @@
                 text-decoration: none;
             }
 
-            /* Состояние кнопки пользователя при наведении */
             .header-user:hover {
                 background: #eeece6;
             }
 
-            /* .user-icon — сама иконка пользователя внутри кружка */
             .user-icon {
                 width: 22px;
                 height: 22px;
             }
 
-            /* ============================
-               Контейнер для контента ниже героя
-               .site-center — выравнивание основного контента по центру
-               ============================ */
             .site-center {
                 width: 100%;
                 max-width: 1200px;
@@ -174,10 +141,6 @@
                 box-sizing: border-box;
             }
 
-            /* ============================
-               Пример отдельного слайдера (если потребуется)
-               #carouselExampleSlidesOnly — карусель с фиксированной высотой
-               ============================ */
             #carouselExampleSlidesOnly {
                 width: 100%;
                 overflow: hidden;
@@ -193,11 +156,6 @@
                 object-fit: cover;
             }
 
-            /* ============================
-               ГЛАВНЫЙ ЭКРАН (hero)
-               .hero-full — полноэкранный блок, в котором
-               фоном крутится слайдер, а сверху контент
-               ============================ */
             .hero-full {
                 min-height: 100vh;
                 width: 100%;
@@ -207,29 +165,26 @@
                 position: relative;
             }
 
-            /* .hero-slider — обёртка для слайдера, который растянут на весь hero */
             .hero-slider {
                 position: absolute;
                 inset: 0;
                 z-index: 0;
             }
 
-            /* Вложенные элементы слайдера внутри hero — растягиваем по высоте hero */
+
             .hero-slider .carousel,
             .hero-slider .carousel-inner,
             .hero-slider .carousel-item {
                 height: 100%;
             }
 
-            /* Картинка внутри слайдов героя — заполняет весь блок без искажений */
+
             .hero-slider .carousel-item img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
 
-            /* Затемняющая подложка над картинкой слайдера,
-               чтобы текст и карточки были читабельными */
             .hero-full::before {
                 content: '';
                 position: absolute;
@@ -238,14 +193,12 @@
                 z-index: 1;
             }
 
-            /* .hero-full__inner — контейнер видимого контента (карточки + форма) поверх слайдера */
             .hero-full__inner {
                 position: relative;
                 z-index: 2;
                 max-width: 1200px;
                 margin: 0 auto;
             }
-            /* .hero-form — строка с полями "Откуда / Куда" и кнопкой заказа */
             .hero-form {
                 display: flex;
                 flex-wrap: wrap;
@@ -254,7 +207,6 @@
                 margin-bottom: 24px;
             }
 
-            /* .hero-input-wrap — обёртка для одного поля ввода с иконкой локации */
             .hero-input-wrap {
                 flex: 1;
                 min-width: 180px;
@@ -267,10 +219,8 @@
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             }
 
-            /* Иконка внутри поля (адрес/локация) */
             .hero-input-wrap svg { flex-shrink: 0; color: #c00; }
 
-            /* Само текстовое поле "Откуда / Куда" */
             .hero-input-wrap input {
                 border: none;
                 outline: none;
@@ -278,10 +228,8 @@
                 font-size: 0.95rem;
             }
 
-            /* .hero-cost — текст с примерной стоимостью справа от полей */
             .hero-cost { color: #fff; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
 
-            /* .hero-btn-order — основная кнопка "Заказать" */
             .hero-btn-order {
                 display: inline-flex;
                 align-items: center;
@@ -298,13 +246,10 @@
                 text-decoration: none;
             }
 
-            /* Ховер по кнопке "Заказать" */
             .hero-btn-order:hover { background: #1a1a1a; color: #fff; }
 
-            /* Иконка-стрелка внутри кнопки "Заказать" */
             .hero-btn-order svg { width: 20px; height: 20px; }
 
-            /* .hero-cta — блок с крупным лозунгом "БЫСТРЫЕ И БЕЗОПАСНЫЕ ГРУЗОПЕРЕВОЗКИ" в правом нижнем углу */
             .hero-cta {
                 position: absolute;
                 bottom: 40px;
@@ -312,8 +257,6 @@
                 text-align: right;
                 z-index: 2;
             }
-
-            /* .hero-cta__text — строки лозунга, крупный белый текст на затемнённом фоне */
             .hero-cta__text {
                 color: #fff;
                 font-weight: 800;
@@ -322,8 +265,6 @@
                 letter-spacing: 0.02em;
                 text-shadow: 0 2px 12px rgba(0,0,0,0.5);
             }
-
-            /* Заголовок и подзаголовок на hero (как на примере с 1 скрина) */
             .hero-heading {
                 margin-top: 10px;
                 margin-bottom: 16px;
@@ -333,7 +274,6 @@
                 color: #fff;
                 font-weight: 900;
             }
-            /* Блок преимуществ (как на 2 скрине) */
             .features {
                 background: #fff;
                 padding: 100px 0;
@@ -366,13 +306,11 @@
                 font-weight: 600;
             }
 
-            /* Блок "Работаем быстро" с фоном на всю ширину */
             .steps-block {
                 position: relative;
                 color: #fff;
                 padding: 60px 0 70px;
                 overflow: hidden;
-                /* Поставь сюда свою картинку грузовика в public/images */
                 background-image: url('/image/image.png');
                 background-size: cover;
                 background-position: center center;
@@ -402,12 +340,11 @@
 
   <header class="site-header">
     <div class="header-capsule">
-        <!-- Логотип: грузовик + ЯСТРЕБ / ГРУЗОПЕРЕВОЗКИ -->
         <a href="{{ url('/') }}" class="header-logo">
             <img src="./image/qwerqwer.png" alt="">
         </a>
 
-        <!-- Меню -->
+
         <nav class="header-nav">
             <a href="{{ route('special') }}" class="header-link">Спец техника</a>
             <a href="{{ route('reviews') }}" class="header-link">Отзывы</a>
@@ -416,7 +353,6 @@
             <a href="{{ route('calc') }}" class="header-link header-link--long">Расчет оплаты и комиссии</a>
         </nav>
 
-        <!-- Личный кабинет (иконка пользователя) -->
         <a href="{{ Route::has('login') ? route('login') : url('/login') }}" class="header-user" aria-label="Личный кабинет">
             <svg class="user-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#1a1a1a"/>
@@ -427,7 +363,7 @@
 
 
 <section class="hero-full">
-    <!-- Слайдер фоном (картинки меняются) -->
+
     <div class="hero-slider">
         <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-inner">
@@ -446,7 +382,6 @@
 
     <div class="hero-full__inner">
 
-        <!-- Заголовок/подзаголовок поверх фонового слайдера -->
         <div class="hero-heading">
             <h1 class="hero-title">Грузоперевозки по России</h1>
         </div>
@@ -505,9 +440,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <div class="feature-item">
-                    <div class="feature-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm0 12H4V9h16v10zm-2-6h-4v4h4v-4zM20 3H6a2 2 0 0 0-2 2h16a2 2 0 0 1 2 2V7a4 4 0 0 0-4-4z"/></svg>
-                    </div>
+                    <div class="feature-icon" aria-hidden="true">💰</div>
                     <div class="feature-text">Экономим ваше время и деньги</div>
                 </div>
             </div>
@@ -540,8 +473,6 @@
         </div>
     </div>    
 </section>
-
-<!-- Блок "Работаем быстро, работаем для Вас" с фоном на всю ширину -->
 <section class="steps-block">
     <div class="site-center steps-inner">
         <h2 class="steps-title">Работаем быстро, работаем для Вас</h2>
