@@ -6,26 +6,26 @@ class PageController extends Controller
 {
     public function special()
     {
-        return view('special');
+        return view('pages.special');
     }
 
     public function reviews()
     {
-        return view('reviews');
+        return view('pages.reviews');
     }
 
     public function contacts()
     {
-        return view('contacts');
+        return view('pages.contacts');
     }
 
     public function news()
     {
-        return view('news');
+        return view('pages.news');
     }
 
     public function calc()
     {
-        return view('cals');
+        return view('pages.cals');
     }
 }
