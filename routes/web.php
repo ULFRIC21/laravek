@@ -14,9 +14,9 @@ Route::get('/contacts', [PageController::class, 'contacts'])->name('contacts');
 Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/calc', [PageController::class, 'calc'])->name('calc');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
