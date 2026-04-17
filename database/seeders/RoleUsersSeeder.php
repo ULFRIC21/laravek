@@ -7,10 +7,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Создаёт тестовые учётки: админ, водитель, грузчик (если таких ещё нет).
+ * для создания тестовых пользователей 
  * Запуск: php artisan db:seed --class=RoleUsersSeeder
  *
- * Логины и пароль по умолчанию:
  *   admin@localhost  — админ,   пароль: admin123
  *   driver@localhost — водитель, пароль: admin123
  *   loader@localhost — грузчик,  пароль: admin123
