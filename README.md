@@ -34,6 +34,10 @@ php artisan migrate
 
 запуск
 php artisan serve
+Invoke-WebRequest -Uri https://getcomposer.org/Composer-Setup.exe -OutFile Composer-Setup.exe; .\Composer-Setup.exe /S
+php composer.phar install
+php composer.phar dump-autoload
+php artisan serve
 
 кэш
 php artisan cache:clear
