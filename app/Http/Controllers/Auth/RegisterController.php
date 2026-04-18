@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'in:client,driver_request,loader_request'],
+            'phone' => ['nullable', 'string', 'max:50'],
+            'vehicle_info' => ['nullable', 'string', 'max:1000'],
         ]);
     }
 
@@ -64,10 +67,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $approved = $data['role'] === 'client';
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+            'phone' => $data['phone'] ?? null,
+            'vehicle_info' => $data['vehicle_info'] ?? null,
+            'approved' => $approved,
         ]);
     }
 }

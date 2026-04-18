@@ -22,11 +22,30 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * Where to redirect users after login (по роли).
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectTo()
+    {
+        $role = auth()->user()->role ?? 'client';
+
+        if ($role === 'admin') {
+            return route('admin');
+        }
+
+        if ($role === 'driver') {
+            return route('driver');
+        }
+
+        if ($role === 'loader') {
+            return route('loader');
+        }
+
+        if (in_array($role, ['driver_request', 'loader_request'], true)) {
+            return route('registration.pending');
+        }
+
+        return route('orders.index');
+    }
 
     /**
      * Create a new controller instance.

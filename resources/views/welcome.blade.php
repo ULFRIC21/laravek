@@ -1,437 +1,414 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+﻿@extends('layouts.app')
 
-        <title>ЯСТРЕБ — Грузоперевозки</title>
+@section('title', 'ЯСТРЕБ — Грузоперевозки')
 
-        <!-- Bootstrap 5 (для слайдера) -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@push('styles')
+<style>
+    .hero-section {
+        position: relative;
+        min-height: 88vh;
+        background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1450&q=80');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding: 120px 16px 60px;
+    }
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(15,23,42,0.5), rgba(15,23,42,0.92));
+        z-index: 0;
+    }
+    .hero-section .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+    .hero-heading {
+        font-size: clamp(2.8rem, 6vw, 4.2rem);
+        font-weight: 900;
+        line-height: 1.02;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+    .hero-copy {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        max-width: 720px;
+        margin-bottom: 40px;
+        color: #e2e8f0;
+    }
+    .hero-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+    }
+    .hero-form .hero-input {
+        background: rgba(255,255,255,0.95);
+        border: none;
+        border-radius: 18px;
+        padding: 18px 20px;
+        font-size: 0.95rem;
+        color: #0f172a;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .hero-form button {
+        border: none;
+        border-radius: 18px;
+        background: #f59e0b;
+        color: #111827;
+        font-weight: 800;
+        padding: 18px 22px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .hero-form button:hover {
+        transform: translateY(-2px);
+        background: #ea580c;
+    }
+    .section-white,
+    .section-light {
+        padding: 80px 16px;
+    }
+    .section-white { background: #ffffff; }
+    .section-light { background: #f7f8fb; }
+    .section-image {
+        position: relative;
+        min-height: 420px;
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        overflow: hidden;
+    }
+    .section-image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(15,23,42,0.55);
+    }
+    .section-image .section-image-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 80px 16px;
+    }
+    .section-title {
+        font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+        color: #475569;
+        max-width: 720px;
+        line-height: 1.8;
+        margin-bottom: 32px;
+    }
+    .stats-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+    .stat-block {
+        background: #ffffff;
+        border-radius: 22px;
+        padding: 28px;
+        box-shadow: 0 20px 45px rgba(15,23,42,0.06);
+        min-height: 150px;
+    }
+    .stat-label {
+        display: block;
+        font-size: 0.95rem;
+        color: #64748b;
+        margin-bottom: 10px;
+    }
+    .stat-value {
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: #0f172a;
+    }
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+    .feature-card {
+        background: #ffffff;
+        border-radius: 22px;
+        padding: 26px;
+        box-shadow: 0 18px 40px rgba(15,23,42,0.05);
+        display: flex;
+        gap: 18px;
+    }
+    .feature-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: #f59e0b;
+        display: grid;
+        place-items: center;
+        color: #ffffff;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+    .feature-card p {
+        margin: 0;
+        font-weight: 600;
+        line-height: 1.7;
+        color: #1f2937;
+    }
+    .chart-card {
+        background: #ffffff;
+        border-radius: 26px;
+        padding: 30px;
+        box-shadow: 0 24px 60px rgba(15,23,42,0.06);
+    }
+    .chart-card canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+    .step-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    .step-card {
+        background: #111827;
+        color: #ffffff;
+        border-radius: 24px;
+        padding: 30px;
+        min-height: 200px;
+    }
+    .step-number {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #fbbf24;
+        margin-bottom: 18px;
+    }
+    .step-text {
+        line-height: 1.8;
+        color: #e5e7eb;
+        font-weight: 500;
+    }
+    .faq-card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 24px 60px rgba(15,23,42,0.06);
+    }
+    .accordion-button {
+        border-radius: 16px;
+        margin-bottom: 10px;
+        background: #f8fafc;
+        color: #0f172a;
+        font-weight: 700;
+    }
+    .accordion-button:not(.collapsed) {
+        background: #f59e0b;
+        color: #111827;
+    }
+    .accordion-body {
+        border-radius: 0 0 16px 16px;
+        color: #475569;
+    }
+    @media (max-width: 768px) {
+        .hero-section { padding-top: 140px; }
+    }
+</style>
+@endpush
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <style>
-            /* Фон всего сайта — меняй здесь цвет/картинку */
-            html, body {
-                width: 100%;
-                min-height: 100%;
-                margin: 0;
-                padding: 0;
-                font-family: 'Nunito', sans-serif;
-                /* Вариант 1: один цвет */
-                background-color: #f5f3ee;
-                /* Вариант 2: градиент (раскомментируй и закомментируй background-color выше) */
-                /* background: linear-gradient(180deg, #f8f6f0 0%, #e8e4dc 50%, #ddd8ce 100%); */
-                /* Вариант 3: картинка (раскомментируй и положи изображение в public/images/) */
-                /* background-image: url('/images/bg.jpg'); */
-                /* background-size: cover; */
-                /* background-attachment: fixed; */
-            }
-            /* Шапка: капсула как на макете */
-            .site-header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 50;
-                display: flex;
-                justify-content: center;
-                padding: 12px 16px;
-            }
-            .header-capsule {
-                width: 100%;
-                max-width: 960px;
-                height: 56px;
-                background: #f8f6f0;
-                border-radius: 9999px;
-                box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-                display: flex;
-                align-items: center;
-                padding: 0 20px;
-                box-sizing: border-box;
-            }
-            .header-logo {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                text-decoration: none;
-                margin-right: 24px;
-            }
-            .logo-icon {
-                width: 40px;
-                height: 28px;
-                flex-shrink: 0;
-            }
-            .logo-text {
-                display: flex;
-                flex-direction: column;
-                line-height: 1.2;
-            }
-            .logo-title {
-                font-size: 1.1rem;
-                font-weight: 700;
-                color: #e85d04;
-                letter-spacing: 0.02em;
-            }
-            .logo-subtitle {
-                font-size: 0.7rem;
-                font-weight: 600;
-                color: #e85d04;
-                letter-spacing: 0.04em;
-            }
-            .header-nav {
-                flex: 1;
-                display: flex;
-                align-items: center;
-                gap: 28px;
-                flex-wrap: wrap;
-            }
-            .header-link {
-                font-size: 0.9rem;
-                font-weight: 600;
-                color: #2d2d2d;
-                text-decoration: none;
-                white-space: nowrap;
-            }
-            .header-link:hover {
-                color: #e85d04;
-            }
-            .header-link--long {
-                white-space: normal;
-                max-width: 160px;
-            }
-            .header-user {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                background: #f8f6f0;
-                border: 1px solid #e8e6e0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-left: 16px;
-                flex-shrink: 0;
-                text-decoration: none;
-            }
-            .header-user:hover {
-                background: #eeece6;
-            }
-            .user-icon {
-                width: 22px;
-                height: 22px;
-            }
-            /* Весь сайт по центру */
-            .site-center {
-                width: 100%;
-                max-width: 960px;
-                margin: 0 auto;
-                padding: 0 16px;
-                box-sizing: border-box;
-            }
-            /* Слайдер: фиксированная высота, одна картинка на экран, без белой полосы */
-            #carouselExampleSlidesOnly {
-                width: 100%;
-                overflow: hidden;
-                border-radius: 12px;
-            }
-            #carouselExampleSlidesOnly .carousel-inner,
-            #carouselExampleSlidesOnly .carousel-item {
-                height: 420px;
-            }
-            #carouselExampleSlidesOnly .carousel-item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            /* Полноэкранный герой + слайдер фоном */
-            .hero-full {
-                min-height: 100vh;
-                width: 100%;
-                margin: 0;
-                padding: 80px 24px 40px;
-                box-sizing: border-box;
-                position: relative;
-            }
-            .hero-slider {
-                position: absolute;
-                inset: 0;
-                z-index: 0;
-            }
-            .hero-slider .carousel,
-            .hero-slider .carousel-inner,
-            .hero-slider .carousel-item {
-                height: 100%;
-            }
-            .hero-slider .carousel-item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            .hero-full::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                background: rgba(0,0,0,0.45);
-                z-index: 1;
-            }
-            .hero-full__inner {
-                position: relative;
-                z-index: 2;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-            .hero-cards {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                margin-bottom: 20px;
-            }
-            @media (min-width: 768px) {
-                .hero-cards { grid-template-columns: repeat(3, 1fr); }
-            }
-            .hero-card {
-                background: #fff;
-                border-radius: 12px;
-                padding: 14px 16px;
-                box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-            }
-            .hero-card__icon { font-size: 1.5rem; margin-bottom: 6px; }
-            .hero-card__title { font-weight: 700; font-size: 0.95rem; color: #1a1a1a; margin-bottom: 4px; }
-            .hero-card__desc { font-size: 0.75rem; color: #555; line-height: 1.3; margin-bottom: 6px; }
-            .hero-card__price { font-weight: 700; color: #e85d04; font-size: 0.9rem; }
-            .hero-form {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                gap: 12px;
-                margin-bottom: 24px;
-            }
-            .hero-input-wrap {
-                flex: 1;
-                min-width: 180px;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                background: #fff;
-                border-radius: 10px;
-                padding: 12px 14px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            }
-            .hero-input-wrap svg { flex-shrink: 0; color: #c00; }
-            .hero-input-wrap input {
-                border: none;
-                outline: none;
-                width: 100%;
-                font-size: 0.95rem;
-            }
-            .hero-cost { color: #fff; font-weight: 700; font-size: 1.1rem; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
-            .hero-btn-order {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                background: #2d2d2d;
-                color: #fff;
-                border: none;
-                padding: 14px 24px;
-                border-radius: 12px;
-                font-weight: 700;
-                font-size: 1rem;
-                cursor: pointer;
-                box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-                text-decoration: none;
-            }
-            .hero-btn-order:hover { background: #1a1a1a; color: #fff; }
-            .hero-btn-order svg { width: 20px; height: 20px; }
-            .hero-cta {
-                position: absolute;
-                bottom: 40px;
-                right: 24px;
-                text-align: right;
-                z-index: 2;
-            }
-            .hero-cta__text {
-                color: #fff;
-                font-weight: 800;
-                font-size: clamp(1.5rem, 4vw, 2.5rem);
-                line-height: 1.15;
-                letter-spacing: 0.02em;
-                text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-            }
-        </style>
-    </head>
-    <body>
-
-  <header class="site-header">
-    <div class="header-capsule">
-        <!-- Логотип: грузовик + ЯСТРЕБ / ГРУЗОПЕРЕВОЗКИ -->
-        <a href="{{ url('/') }}" class="header-logo">
-            <svg class="logo-icon" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 20h6l2-6h12l2 6h6v-4l-4-8H8L4 16v4z" fill="#e85d04"/>
-                <path d="M8 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM36 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="#1a1a1a"/>
-                <path d="M14 16h20v2H14z" fill="#e85d04" opacity="0.8"/>
-                <path d="M2 18h4v2H2zM42 18h4v2h-4z" stroke="#e85d04" stroke-width="1.5" fill="none"/>
-            </svg>
-            <div class="logo-text">
-                <span class="logo-title">ЯСТРЕБ</span>
-                <span class="logo-subtitle">ГРУЗОПЕРЕВОЗКИ</span>
-            </div>
-        </a>
-
-        <!-- Меню -->
-        <nav class="header-nav">
-            <a href="{{ route('special') }}" class="header-link">Спец техника</a>
-            <a href="{{ route('reviews') }}" class="header-link">Отзывы</a>
-            <a href="{{ route('contacts') }}" class="header-link">Контакты</a>
-            <a href="{{ route('news') }}" class="header-link">Новости</a>
-            <a href="{{ route('calc') }}" class="header-link header-link--long">Расчет оплаты и комиссии</a>
-        </nav>
-
-        <!-- Личный кабинет (иконка пользователя) -->
-        <a href="{{ Route::has('login') ? route('login') : url('/login') }}" class="header-user" aria-label="Личный кабинет">
-            <svg class="user-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#1a1a1a"/>
-            </svg>
-        </a>
-    </div>
-</header>
-
-<section class="hero-full">
-    <!-- Слайдер фоном (картинки меняются) -->
-    <div class="hero-slider">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://cs7.pikabu.ru/post_img/big/2017/12/27/6/1514366973114574560.jpg" class="d-block w-100" alt="Грузоперевозки">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://cs7.pikabu.ru/post_img/big/2017/12/27/6/1514367031115049152.jpg" class="d-block w-100" alt="Спецтехника">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://cs7.pikabu.ru/post_img/big/2017/12/27/6/1514366973114574560.jpg" class="d-block w-100" alt="Доставка">
-                </div>
-            </div>
+@section('content')
+<section class="hero-section">
+    <div class="hero-inner">
+        <h1 class="hero-heading">Надежные грузоперевозки по всей России</h1>
+        <p class="hero-copy">Скорость, удобный расчет и безопасная доставка от своего логистического партнера. Оформите заказ и получите актуальную цену за 1 минуту.</p>
+        <div class="d-flex flex-wrap gap-3 mb-3">
+            <button type="button" class="btn btn-warning btn-lg" onclick="window.location.href='{{ route('register', ['role' => 'client']) }}'">Я заказчик</button>
+            <button type="button" class="btn btn-outline-light btn-lg" onclick="window.location.href='{{ route('register', ['role' => 'driver_request']) }}'">Я водитель</button>
+            <button type="button" class="btn btn-outline-light btn-lg" onclick="window.location.href='{{ route('register', ['role' => 'loader_request']) }}'">Я грузчик</button>
         </div>
-    </div>
-
-    <div class="hero-full__inner">
-        <div class="hero-cards">
-            <div class="hero-card">
-                <div class="hero-card__icon">🚐</div>
-                <div class="hero-card__title">Газель</div>
-                <div class="hero-card__desc">Легкий грузовик с грузоподъёмностью до 1,5 тонн</div>
-                <div class="hero-card__price">от 147 Р</div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-card__icon">🚛</div>
-                <div class="hero-card__title">5-тонник</div>
-                <div class="hero-card__desc">Тяжёлый грузовик грузоподъёмностью до 5 тонн</div>
-                <div class="hero-card__price">от 897 Р</div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-card__icon">🚙</div>
-                <div class="hero-card__title">Минивэн</div>
-                <div class="hero-card__desc">Грузовая версия с грузоподъёмностью до 1,5 тонн</div>
-                <div class="hero-card__price">от 497 Р</div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-card__icon">🚚</div>
-                <div class="hero-card__title">Самосвал</div>
-                <div class="hero-card__desc">Тяжёлый грузовик с открытым кузовом, до 7 тонн</div>
-                <div class="hero-card__price">от 947 Р</div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-card__icon">🚜</div>
-                <div class="hero-card__title">Трактора</div>
-                <div class="hero-card__desc">Самоходная машина для тяги и привода навесных орудий</div>
-                <div class="hero-card__price">от 797 Р</div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-card__icon">👷</div>
-                <div class="hero-card__title">Грузчики</div>
-                <div class="hero-card__desc">Погрузка, разгрузка и переноска грузов</div>
-                <div class="hero-card__price">от 697 Р</div>
-            </div>
-        </div>
-
+        <p class="hero-copy" style="max-width: 720px;">Заказчик получает доступ к оформлению заказа сразу. Водитель и грузчик подают заявку, которую администратор должен подтвердить.</p>
         <div class="hero-form">
-            <div class="hero-input-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <input type="text" placeholder="Откуда" class="hero-input">
-            </div>
-            <div class="hero-input-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <input type="text" placeholder="Куда?" class="hero-input">
-            </div>
-            <span class="hero-cost">Стоимость: 5000 Р</span>
-            <a href="{{ route('calc') ? route('calc') : url('/calc') }}" class="hero-btn-order">
-                Заказать
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-            </a>
+            <input class="hero-input" type="text" placeholder="Откуда">
+            <input class="hero-input" type="text" placeholder="Куда">
+            <input class="hero-input" type="text" placeholder="Груз">
+            <button type="button" onclick="window.location.href='{{ route('calc') }}'">Заказать</button>
         </div>
-    </div>
-
-    <div class="hero-cta">
-        <div class="hero-cta__text">БЫСТРЫЕ</div>
-        <div class="hero-cta__text">И БЕЗОПАСНЫЕ</div>
-        <div class="hero-cta__text">ГРУЗОПЕРЕВОЗКИ</div>
     </div>
 </section>
 
-<div class="site-center" style="padding-top: 24px; padding-bottom: 40px;">
-    <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+<section class="section-white">
+    <div class="site-center">
+        <div class="stats-row">
+            <div class="stat-block">
+                <span class="stat-label">ценка клиентов</span>
+                <span class="stat-value">4.9 / 5</span>
+            </div>
+            <div class="stat-block">
+                <span class="stat-label">оставок в месяц</span>
+                <span class="stat-value">1 250+</span>
+            </div>
+            <div class="stat-block">
+                <span class="stat-label">арантия сроков</span>
+                <span class="stat-value">98%</span>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+</section>
+
+<section class="section-image" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');">
+    <div class="section-image-inner">
+        <h2 class="section-title">Транспорт любой сложности</h2>
+        <p class="hero-copy">Мы перевозим контейнеры, спецтехнику, крупногабаритные и сборные грузы по России с контролем на каждом этапе.</p>
     </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+</section>
+
+<section class="section-light">
+    <div class="site-center">
+        <h2 class="section-title">Почему выбирают нас</h2>
+        <p class="section-subtitle">Сбалансированный подход, быстрый расчет и поддержка на каждом этапе доставки.</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <p>Страхование груза на всех этапах и контроль сохранности.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <p>Быстрый расчет маршрута и прозрачная стоимость без скрытых платежей.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <p>Готовые решения для бизнеса и индивидуальный менеджер под ваш маршрут.</p>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<div class="grid text-center">
-  <div class="g-col-6">.g-col-6</div>
-  <div class="g-col-6">.g-col-6</div>
+</section>
 
-  <div class="g-col-6">.g-col-6</div>
-  <div class="g-col-6">.g-col-6</div>
-</div>
+<section class="section-white">
+    <div class="site-center">
+        <div class="chart-card">
+            <h2 class="section-title">График заказов</h2>
+            <canvas id="ordersChart" height="220"></canvas>
+        </div>
+    </div>
+</section>
 
+<section class="section-light" style="background-image: linear-gradient(180deg, rgba(247,248,251,1), rgba(247,248,251,0.96));">
+    <div class="site-center">
+        <h2 class="section-title">Как мы работаем</h2>
+        <div class="step-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-text">Оставляете заявку в один клик, мы сразу рассчитываем оптимальный маршрут.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-text">Уточняем детали, подбираем лучший транспорт и документируем заказ.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-text">Организуем отправку и контролируем движение груза до места назначения.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-number">04</div>
+                <div class="step-text">Доставляем груз в срок и передаем его в руки получателя.</div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="section-image" style="background-image: url('https://images.unsplash.com/photo-1517632298120-6f5c270a4c59?auto=format&fit=crop&w=1600&q=80'); min-height: 360px;">
+    <div class="section-image-inner">
+        <h2 class="section-title">Надежная логистика для бизнеса</h2>
+        <p class="hero-copy">Крупные и регулярные отправки выполняются по четкому графику, с удобным документооборотом и сопровождением.</p>
+    </div>
+</section>
 
+<section class="section-white">
+    <div class="site-center">
+        <div class="faq-card">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqHeadingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true">Что такое услуга перегон автомобиля?</button>
+                    </h2>
+                    <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">Перегон автомобиля — это доставка машины из точки А в точку Б с соблюдением всех правил дорожного движения и полной безопасностью.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqHeadingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false">Как подобрать автовоз на нужную дату?</button>
+                    </h2>
+                    <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">По популярным направлениям автовоз доступен быстро. Для других маршрутов мы предлагаем удобные даты с учетом загрузки.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faqHeadingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false">Куда доставлять автомобиль перед перевозкой?</button>
+                    </h2>
+                    <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">Автомобиль передается на согласованную стоянку в пункте загрузки и затем забирается по акту.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
 
-
-</div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById('ordersChart');
+        if (!ctx) return;
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Янв', 'ев', 'ар', 'пр', 'ай', 'юн', 'юл'],
+                datasets: [
+                    {
+                        label: 'аказы',
+                        data: [120, 150, 180, 170, 200, 220, 240],
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.18)',
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#f59e0b'
+                    },
+                    {
+                        label: 'еализация',
+                        data: [90, 130, 160, 155, 190, 205, 230],
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.16)',
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#2563eb'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                interaction: { mode: 'nearest', axis: 'x', intersect: false },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { beginAtZero: true, ticks: { stepSize: 50 } }
+                }
+            }
+        });
+    });
+</script>
+@endpush
