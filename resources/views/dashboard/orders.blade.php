@@ -11,7 +11,11 @@
     @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+    @if(session('error'))
+    <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
 
+    @if(auth()->user()->isClient())
     <div class="card mb-4">
         <div class="card-body">
             <h5 class="card-title mb-2">Новый заказ</h5>
@@ -39,6 +43,13 @@
             </form>
         </div>
     </div>
+    @elseif(auth()->user()->isAdmin())
+    <div class="alert alert-info">Вы видите все активные заказы. Назначьте исполнителей и завершайте рейсы.</div>
+    @elseif(auth()->user()->isDriver())
+    <div class="alert alert-info">Это ваш кабинет водителя. Здесь отображаются только заказы, назначенные вам.</div>
+    @elseif(auth()->user()->isLoader())
+    <div class="alert alert-info">Это ваш кабинет грузчика. Здесь отображаются только заявки с вашим назначением.</div>
+    @endif
 
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -67,9 +78,11 @@
                         @endif
                     </td>
                     <td>
+                    @if(auth()->user()->isAdmin())
                         <a href="{{ route('orders.execute', $order->id) }}" class="btn btn-sm btn-outline-primary">В работу</a>
                         <a href="{{ route('orders.complete', $order->id) }}" class="btn btn-sm btn-outline-success">Завершить</a>
-                    </td>
+                    @endif
+                </td>
                 </tr>
                 @empty
                 <tr>

@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return $this->role === 'loader';
     }
+
+    public function isClient(): bool
+    {
+        return $this->role === 'client';
+    }
 }
