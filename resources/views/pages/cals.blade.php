@@ -1,16 +1,13 @@
 @extends('layouts.main')
 
-@section('title', 'Расчет оплаты и комиссии — ЯСТРЕБ')
+@section('title', 'Расчёт оплаты и комиссии — ЯСТРЕБ')
 
 @section('content')
-
 <nav aria-label="breadcrumb" class="bg-light border-top" style="padding:8px 0;">
     <div class="site-center">
         <ol class="breadcrumb mb-0 small">
-            <li class="breadcrumb-item">
-                <a href="{{ url('/') }}">Главная</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Проекты</li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Расчёт стоимости</li>
         </ol>
     </div>
 </nav>
@@ -29,7 +26,7 @@
                             <label class="form-label">Тип транспорта</label>
                             <select class="form-select">
                                 <option>Газель</option>
-                                <option>5‑тонник</option>
+                                <option>5-тонник</option>
                                 <option>Фура 20 тонн</option>
                                 <option>Контейнер ЖД</option>
                             </select>
@@ -75,170 +72,32 @@
                 <div class="card-body d-flex flex-column justify-content-center">
                     <h5 class="card-title mb-3">Ориентировочная стоимость</h5>
                     <p class="display-6 mb-2">от 5 000 ₽</p>
-                    <p class="small text-muted mb-0">
-                        Точная стоимость зависит от километража, типа транспорта, сезона и дополнительных услуг.
-                        После отправки заявки менеджер уточнит детали и подтвердит окончательную цену.
-                    </p>
+                    <p class="small text-muted mb-0">Точная стоимость зависит от километража, типа транспорта, сезона и дополнительных услуг. После отправки заявки менеджер уточнит детали и подтвердит окончательную цену.</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="mt-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Направление</th>
+                        <th>20 футов</th>
+                        <th>40 футов</th>
+                        <th>Вид доставки</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Абакан</td><td>178 000 руб.</td><td>183 000 руб.</td><td>дверь-дверь</td></tr>
+                    <tr><td>Екатеринбург</td><td>164 000 руб.</td><td>171 000 руб.</td><td>терминал-дверь</td></tr>
+                    <tr><td>Краснодар</td><td>152 000 руб.</td><td>160 000 руб.</td><td>дверь-дверь</td></tr>
+                    <tr><td>Новосибирск</td><td>169 000 руб.</td><td>176 000 руб.</td><td>терминал-терминал</td></tr>
+                    <tr><td>Ростов-на-Дону</td><td>146 000 руб.</td><td>154 000 руб.</td><td>дверь-дверь</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-  <table class="table table-bordered table-striped align-middle">
-      <thead class="table-primary">
-      <tr>
-          <th>Направление</th>
-          <th>20 футов</th>
-          <th>40 футов</th>
-          <th>Вид доставки</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>
-            <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>
-            <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>      <tr>
-          <td>Абакан</td>
-          <td>178 000 руб.</td>
-          <td>183 000 руб.</td>
-          <td>дверь‑дверь</td>
-      </tr>
-
-      </tbody>
-  </table>
-
 @endsection
