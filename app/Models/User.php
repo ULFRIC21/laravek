@@ -22,6 +22,9 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'phone',
+        'vehicle_info',
+        'approved',
     ];
 
     /**
@@ -41,6 +44,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'approved' => 'boolean',
     ];
 
     public function orders()

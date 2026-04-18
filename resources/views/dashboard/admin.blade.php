@@ -35,6 +35,10 @@
         </div>
     </div>
 
+    <div class="mb-4">
+        <a href="{{ route('admin.requests') }}" class="btn btn-outline-secondary">Заявки на работу</a>
+    </div>
+
     <h2 class="h5 mb-2">Последние заказы</h2>
     <div class="table-responsive">
         <table class="table table-sm table-bordered">

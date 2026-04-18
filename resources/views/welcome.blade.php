@@ -226,6 +226,12 @@
     <div class="hero-inner">
         <h1 class="hero-heading">Надежные грузоперевозки по всей России</h1>
         <p class="hero-copy">Скорость, удобный расчет и безопасная доставка от своего логистического партнера. Оформите заказ и получите актуальную цену за 1 минуту.</p>
+        <div class="d-flex flex-wrap gap-3 mb-3">
+            <button type="button" class="btn btn-warning btn-lg" onclick="window.location.href='{{ route('register', ['role' => 'client']) }}'">Я заказчик</button>
+            <button type="button" class="btn btn-outline-light btn-lg" onclick="window.location.href='{{ route('register', ['role' => 'driver_request']) }}'">Я водитель</button>
+            <button type="button" class="btn btn-outline-light btn-lg" onclick="window.location.href='{{ route('register', ['role' => 'loader_request']) }}'">Я грузчик</button>
+        </div>
+        <p class="hero-copy" style="max-width: 720px;">Заказчик получает доступ к оформлению заказа сразу. Водитель и грузчик подают заявку, которую администратор должен подтвердить.</p>
         <div class="hero-form">
             <input class="hero-input" type="text" placeholder="Откуда">
             <input class="hero-input" type="text" placeholder="Куда">

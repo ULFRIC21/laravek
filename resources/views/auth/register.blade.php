@@ -12,6 +12,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        @php $selectedRole = old('role', request('role', 'client')); @endphp
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Имя</label>
@@ -38,6 +39,55 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="role" class="col-md-4 col-form-label text-md-end">Я хочу зарегистрироваться как</label>
+
+                            <div class="col-md-6">
+                                <select id="role" name="role" class="form-select @error('role') is-invalid @enderror" required>
+                                    <option value="client"{{ $selectedRole === 'client' ? ' selected' : '' }}>Заказчик</option>
+                                    <option value="driver_request"{{ $selectedRole === 'driver_request' ? ' selected' : '' }}>Водитель</option>
+                                    <option value="loader_request"{{ $selectedRole === 'loader_request' ? ' selected' : '' }}>Грузчик</option>
+                                </select>
+                                <div class="form-text">Заказчик сразу получает доступ к оформлению заказов. Водитель и грузчик подают заявку на подтверждение.</div>
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div id="employee-fields" class="d-none">
+                            <div class="row mb-3">
+                                <label for="phone" class="col-md-4 col-form-label text-md-end">Телефон</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
+
+                                    @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="vehicle_info" class="col-md-4 col-form-label text-md-end">Информация о машине</label>
+
+                                <div class="col-md-6">
+                                    <textarea id="vehicle_info" class="form-control @error('vehicle_info') is-invalid @enderror" name="vehicle_info" rows="3">{{ old('vehicle_info') }}</textarea>
+
+                                    @error('vehicle_info')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
@@ -95,6 +145,8 @@
         const password = document.getElementById('password');
         const togglePasswordConfirm = document.getElementById('togglePasswordConfirm');
         const passwordConfirm = document.getElementById('password-confirm');
+        const roleSelect = document.getElementById('role');
+        const employeeFields = document.getElementById('employee-fields');
 
         if (togglePassword && password) {
             togglePassword.addEventListener('click', function () {
@@ -110,6 +162,17 @@
                 passwordConfirm.setAttribute('type', type);
                 this.textContent = type === 'password' ? 'Показать' : 'Скрыть';
             });
+        }
+
+        function updateEmployeeFields() {
+            if (!roleSelect) return;
+            const show = roleSelect.value === 'driver_request' || roleSelect.value === 'loader_request';
+            employeeFields.classList.toggle('d-none', !show);
+        }
+
+        if (roleSelect) {
+            roleSelect.addEventListener('change', updateEmployeeFields);
+            updateEmployeeFields();
         }
     });
 </script>

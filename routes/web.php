@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->group(function () {
+    Route::get('/registration-pending', [App\Http\Controllers\Auth\PendingController::class, 'index'])->name('registration.pending');
+
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/{id}/execute', [OrderController::class, 'execute'])->name('orders.execute')->where('id', '[0-9]+');
@@ -31,4 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/driver', [DriverController::class, 'index'])->name('driver')->middleware('role:driver,admin');
     Route::get('/loader', [LoaderController::class, 'index'])->name('loader')->middleware('role:loader,admin');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('role:admin');
+    Route::get('/admin/requests', [AdminController::class, 'requests'])->name('admin.requests')->middleware('role:admin');
+    Route::post('/admin/requests/{id}/approve', [AdminController::class, 'approveRequest'])->name('admin.requests.approve')->middleware('role:admin');
 });
