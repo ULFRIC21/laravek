@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/{id}/execute', [OrderController::class, 'execute'])->name('orders.execute')->where('id', '[0-9]+');
     Route::post('/orders/{id}/assign', [OrderController::class, 'assign'])->name('orders.assign')->where('id', '[0-9]+');
+    Route::post('/orders/{id}/cancel', [OrderController::class, 'cancel'])->name('orders.cancel')->where('id', '[0-9]+');
     Route::get('/orders/{id}/complete', [OrderController::class, 'completeForm'])->name('orders.complete')->where('id', '[0-9]+');
     Route::post('/orders/{id}/complete', [OrderController::class, 'complete'])->name('orders.complete.store')->where('id', '[0-9]+');
     Route::get('/driver', [DriverController::class, 'index'])->name('driver')->middleware('role:driver,admin');

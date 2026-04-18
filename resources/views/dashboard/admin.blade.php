@@ -46,6 +46,9 @@
                 <tr>
                     <th>№</th>
                     <th>Маршрут</th>
+                    <th>Цена</th>
+                    <th>Контакт</th>
+                    <th>Дата</th>
                     <th>Статус</th>
                     <th>Действия</th>
                 </tr>
@@ -55,18 +58,29 @@
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->from_address }} → {{ $order->to_address }}</td>
+                    <td>{{ $order->price ? number_format($order->price, 0, ',', ' ') . ' ₽' : '—' }}</td>
+                    <td>{{ $order->contact_phone ?? $order->user->phone ?? $order->user->email }}</td>
+                    <td>{{ $order->scheduled_at ? $order->scheduled_at->format('d.m.Y H:i') : ($order->created_at->format('d.m.Y H:i')) }}</td>
                     <td>
                         @if($order->status === 'new')
                         <span class="badge bg-secondary">Новый</span>
                         @elseif($order->status === 'in_progress')
                         <span class="badge bg-primary">В работе</span>
+                        @elseif($order->status === 'postponed')
+                        <span class="badge bg-warning text-dark">Отложен</span>
+                        @elseif($order->status === 'cancelled')
+                        <span class="badge bg-danger">Отменён</span>
                         @else
                         <span class="badge bg-success">Завершён</span>
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('orders.execute', $order->id) }}" class="btn btn-sm btn-outline-primary">Исполнение</a>
-                        <a href="{{ route('orders.complete', $order->id) }}" class="btn btn-sm btn-outline-success">Завершить</a>
+                        <a href="{{ route('orders.execute', $order->id) }}" class="btn btn-sm btn-outline-primary mb-1">Исполнение</a>
+                        <form action="{{ route('orders.cancel', $order->id) }}" method="post" class="d-inline">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-outline-danger mb-1">Отказаться</button>
+                        </form>
+                        <a href="{{ route('orders.execute', $order->id) }}" class="btn btn-sm btn-outline-secondary">Отложить</a>
                     </td>
                 </tr>
                 @empty

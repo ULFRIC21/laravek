@@ -30,6 +30,10 @@
                     <input type="text" name="to_address" class="form-control form-control-sm" placeholder="Адрес выгрузки" required>
                 </div>
                 <div class="col-md-2">
+                    <label class="form-label small">Телефон</label>
+                    <input type="text" name="contact_phone" class="form-control form-control-sm" placeholder="Контактный номер" value="{{ old('contact_phone', auth()->user()->phone) }}">
+                </div>
+                <div class="col-md-2">
                     <label class="form-label small">Вес, кг</label>
                     <input type="number" name="weight" class="form-control form-control-sm" placeholder="—" step="0.01" min="0">
                 </div>
@@ -73,6 +77,10 @@
                         <span class="badge bg-secondary">Новый</span>
                         @elseif($order->status === 'in_progress')
                         <span class="badge bg-primary">В работе</span>
+                        @elseif($order->status === 'postponed')
+                        <span class="badge bg-warning text-dark">Отложен</span>
+                        @elseif($order->status === 'cancelled')
+                        <span class="badge bg-danger">Отменён</span>
                         @else
                         <span class="badge bg-success">Завершён</span>
                         @endif

@@ -15,21 +15,29 @@ class Order extends Model
         'to_address',
         'weight',
         'volume',
+        'price',
+        'contact_phone',
         'status',
         'driver_id',
         'loader_id',
         'assigned_at',
+        'scheduled_at',
+        'arrival_at',
         'completed_at',
         'comment',
     ];
 
     protected $casts = [
         'assigned_at' => 'datetime',
+        'scheduled_at' => 'datetime',
+        'arrival_at' => 'datetime',
         'completed_at' => 'datetime',
     ];
 
     public const STATUS_NEW = 'new';
     public const STATUS_IN_PROGRESS = 'in_progress';
+    public const STATUS_POSTPONED = 'postponed';
+    public const STATUS_CANCELLED = 'cancelled';
     public const STATUS_COMPLETED = 'completed';
 
     public function user()

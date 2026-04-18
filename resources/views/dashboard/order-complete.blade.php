@@ -15,7 +15,10 @@
     <h1 class="mb-3">Завершение заказа #{{ $order->id }}</h1>
     <div class="card mb-4">
         <div class="card-body">
-            <p class="mb-0"><strong>Маршрут:</strong> {{ $order->from_address }} → {{ $order->to_address }}</p>
+            <p class="mb-1"><strong>Маршрут:</strong> {{ $order->from_address }} → {{ $order->to_address }}</p>
+            <p class="mb-1 small"><strong>Цена:</strong> {{ $order->price ? number_format($order->price, 0, ',', ' ') . ' ₽' : '—' }}</p>
+            <p class="mb-1 small"><strong>Запланировано:</strong> {{ $order->scheduled_at ? $order->scheduled_at->format('d.m.Y H:i') : '—' }}</p>
+            <p class="mb-0 small"><strong>Прибытие:</strong> {{ $order->arrival_at ? $order->arrival_at->format('d.m.Y H:i') : '—' }}</p>
         </div>
     </div>
 

@@ -43,6 +43,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="phone" class="col-md-4 col-form-label text-md-end">Телефон</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
+
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-end">Я хочу зарегистрироваться как</label>
 
                             <div class="col-md-6">
@@ -62,20 +76,6 @@
                         </div>
 
                         <div id="employee-fields" class="d-none">
-                            <div class="row mb-3">
-                                <label for="phone" class="col-md-4 col-form-label text-md-end">Телефон</label>
-
-                                <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
-
-                                    @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <div class="row mb-3">
                                 <label for="vehicle_info" class="col-md-4 col-form-label text-md-end">Информация о машине</label>
 
